@@ -1,6 +1,9 @@
 import re
 from nicegui import ui
+from nicegui.ui_run import native_module
 from solver import BookwormSolver
+from multiprocessing import freeze_support
+freeze_support()
 
 solver = BookwormSolver()
 
@@ -58,4 +61,4 @@ async def main():
             
         results_container = ui.column().classes('w-full')
 
-ui.run(title='Bookworm Solver', native=True)
+ui.run(title='Bookworm Solver', reload=False, show=True, dark=True, native=True, port=native_module.find_open_port())
